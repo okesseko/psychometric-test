@@ -13,16 +13,20 @@
     </ul>
   </div>
   <div v-else>
-    <h1>{{ $t(`${result}`) }}</h1>
-    <p>{{ $t(`${result}Description`) }}</p>
-    <button @click="reset">重新測試</button>
+    <div class="result">
+      <h1 class="result-title">{{ $t(`${result}`) }}</h1>
+      <p class="result-description">{{ $t(`${result}Description1`) }}</p>
+      <p class="result-description">{{ $t(`${result}Description2`) }}</p>
+      <p class="result-description">{{ $t(`${result}Description3`) }}</p>
+      <button class="retest" @click="reset">重新測試</button>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const currentQuestionIndex = ref(1);
+const currentQuestionIndex = ref(8);
 const answerStatistics = ref([0, 0, 0]);
-const result = ref("");
+const result = ref("pragmatist");
 
 const answerClick = (index: number) => {
   answerStatistics.value[index]++;
@@ -53,11 +57,13 @@ const reset = () => {
   currentQuestionIndex.value = 1;
   answerStatistics.value = [0, 0, 0];
   result.value = "";
-  console.log(currentQuestionIndex.value)
 };
 </script>
 
 <style scoped>
+. {
+  font-family: "Noto Sans TC", sans-serif;
+}
 .image-wrapper {
   display: flex;
   align-items: center;
@@ -89,5 +95,20 @@ const reset = () => {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.result {
+  margin: 20px 20%;
+  background-color: aqua;
+}
+.result-title {
+  margin: 20px;
+  font-size: 60px;
+  text-align: center;
+}
+
+.result-description {
+  text-align: center;
+  font-size: 30px;
 }
 </style>
