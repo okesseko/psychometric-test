@@ -1,6 +1,8 @@
 <template>
   <div v-if="currentQuestionIndex < 8">
-    <div class="image-wrapper"><div class="image-content">content</div></div>
+    <div class="image-wrapper">
+      <img src="/image/question1.jpg" width="600" height="400" />
+    </div>
     <p class="description">
       {{ $t(`questions${currentQuestionIndex}`) }}{{ $t("questionEnding") }}
     </p>
